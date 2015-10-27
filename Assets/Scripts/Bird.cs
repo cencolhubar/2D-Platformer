@@ -6,7 +6,7 @@ public class Bird : MonoBehaviour
 
     public int scoreValue;
     private SpawnManager gameController;
-
+    public AudioSource sound;
     // Use this for initialization
     void Start()
     {
@@ -31,9 +31,10 @@ public class Bird : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
+    { sound.Play();
         if (other.gameObject.CompareTag("Player"))
         {
+           
             Destroy(gameObject);
             gameController.AddScore(scoreValue);
             

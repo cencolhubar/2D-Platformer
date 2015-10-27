@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour {
     public GameObject Bird2;
     public GameObject Bird3;
     public GameObject Bird4;
+    public GameObject Bat;
 
     public Vector3 spawnValues;
     public int hazardCount;
@@ -81,6 +82,9 @@ public class SpawnManager : MonoBehaviour {
                 bird = false;
             }
             */
+
+            Vector3 spawnPosition5 = new Vector3(spawnValues.x, Random.Range(-spawnValues.y, spawnValues.y), spawnValues.z);
+            Quaternion spawnRotation = Quaternion.identity;
             for (int i = 0; i < hazardCount; i++)
             {
 
@@ -99,15 +103,17 @@ public class SpawnManager : MonoBehaviour {
 
 
                 // Debug.Log("spawn pos"+spawnPosition.x);
-                Quaternion spawnRotation = Quaternion.identity;
+                
 
                 Instantiate(Bird1, spawnPosition1, spawnRotation);
                 Instantiate(Bird2, spawnPosition2, spawnRotation);
                 Instantiate(Bird3, spawnPosition3, spawnRotation);
                 Instantiate(Bird4, spawnPosition4, spawnRotation);
+                
 
                 yield return new WaitForSeconds(spawnWait);
             }
+            Instantiate(Bat, spawnPosition5, spawnRotation);
             yield return new WaitForSeconds(waveWait);
 
             if (gameOver)

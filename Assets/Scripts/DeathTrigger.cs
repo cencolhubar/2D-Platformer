@@ -4,6 +4,7 @@ using System.Collections;
 public class DeathTrigger : MonoBehaviour {
     private SpawnManager gameController;
     // Use this for initialization
+    public AudioSource sound;
     void Start () {
 
 	}
@@ -29,7 +30,7 @@ public class DeathTrigger : MonoBehaviour {
         
         
         if (other.gameObject.CompareTag("Player"))
-        {
+        { sound.Play();
             gameController.lives--;
             gameController.UpdateLives();
             if (gameController.lives > 0) {
@@ -39,10 +40,11 @@ public class DeathTrigger : MonoBehaviour {
                 player.GetComponent<Transform>().position = new Vector3(0,10, 0);
 
            }
-            if (gameController.lives == 0)
+           else if (gameController.lives <= 0)
             {
+                gameController.lives = 0;
                 gameController.GameOver();
-                
+               
 
             }
         }

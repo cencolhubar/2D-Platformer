@@ -89,7 +89,7 @@ private Rigidbody2D rb2d;
 		//	If player pressed jump then play jump animation and addforce to the y axis (up) then set jump to false
 		if (jump)
 		{
-			anim.SetTrigger("Jump0");
+			anim.SetTrigger("Jump");
 			rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
 		}
