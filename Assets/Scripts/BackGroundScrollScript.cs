@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This class loops the background around the quad
+/// </summary>
+
 public class BackGroundScrollScript : MonoBehaviour {
 
     public float speed;

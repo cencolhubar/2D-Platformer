@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This class defines the Bsts GameObject's behaviour
+/// </summary>
 public class Bat : MonoBehaviour {
     private SpawnManager gameController;
     public AudioSource sound;
@@ -30,7 +33,7 @@ public class Bat : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            sound.Play();
+            
             gameController.lives--;
             gameController.UpdateLives();
             if (gameController.lives > 0)
@@ -49,6 +52,7 @@ public class Bat : MonoBehaviour {
 
 
             }
+            sound.Play();
         }
     }
 }

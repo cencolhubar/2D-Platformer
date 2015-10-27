@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This class makes the ground fall away from under the player after a few seconds
+/// </summary>
+
 public class PlatformFall : MonoBehaviour {
 
     public float fallDelay=1f;

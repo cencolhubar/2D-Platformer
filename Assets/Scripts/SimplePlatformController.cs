@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This class controls player movement
+/// </summary>
+
 public class SimplePlatformController : MonoBehaviour {
 
 [HideInInspector] public bool facingRight = true;

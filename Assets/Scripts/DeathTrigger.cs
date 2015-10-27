@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This class kills the player when he falls into the abyss. After three tries the game is over
+/// </summary>
+
 public class DeathTrigger : MonoBehaviour {
     private SpawnManager gameController;
     // Use this for initialization

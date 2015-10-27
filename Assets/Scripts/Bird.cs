@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// This class defines the Bird GameObject's behaviour
+/// </summary>
 public class Bird : MonoBehaviour
 {
 
@@ -31,13 +33,14 @@ public class Bird : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    { sound.Play();
+    { 
         if (other.gameObject.CompareTag("Player"))
-        {
-           
-            Destroy(gameObject);
-            gameController.AddScore(scoreValue);
+        { Destroy(gameObject);
             
+            
+            gameController.AddScore(scoreValue);
+          
+sound.Play();
         }
     }
 }

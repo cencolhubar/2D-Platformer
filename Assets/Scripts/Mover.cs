@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// This class controls very simple ai movement for the birds and bats
+/// </summary>
 public class Mover : MonoBehaviour
 {
     private Vector2 startPos;

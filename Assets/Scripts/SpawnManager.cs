@@ -2,6 +2,10 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class spawns birds and bats for the player to collect and avoid respectively
+/// </summary>
+
 public class SpawnManager : MonoBehaviour {
     private bool spawn= true;
     public int maxPlatforms = 100;
@@ -17,6 +21,7 @@ public class SpawnManager : MonoBehaviour {
     public GameObject Bat;
 
     public Vector3 spawnValues;
+    public Vector3 spawnValuesbat;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -83,7 +88,7 @@ public class SpawnManager : MonoBehaviour {
             }
             */
 
-            Vector3 spawnPosition5 = new Vector3(spawnValues.x, Random.Range(-spawnValues.y, spawnValues.y), spawnValues.z);
+            
             Quaternion spawnRotation = Quaternion.identity;
             for (int i = 0; i < hazardCount; i++)
             {
@@ -94,26 +99,22 @@ public class SpawnManager : MonoBehaviour {
                 Vector3 spawnPosition3 = new Vector3(spawnValues.x, Random.Range(-spawnValues.y, spawnValues.y), spawnValues.z);
                 Vector3 spawnPosition4 = new Vector3(spawnValues.x, Random.Range(-spawnValues.y, spawnValues.y), spawnValues.z);
 
-                // Debug.Log("spawn pos"+spawnPosition.x);
-
-                // Debug.Log("spawn pos"+spawnPosition.x);
-
-
-                // Debug.Log("spawn pos"+spawnPosition.x);
-
-
-                // Debug.Log("spawn pos"+spawnPosition.x);
                 
-
+//Generates birds on screen
                 Instantiate(Bird1, spawnPosition1, spawnRotation);
                 Instantiate(Bird2, spawnPosition2, spawnRotation);
                 Instantiate(Bird3, spawnPosition3, spawnRotation);
                 Instantiate(Bird4, spawnPosition4, spawnRotation);
-                
 
+				//Randomly generate bats on screen
+                if (Random.Range(1,18) % 3 == 0)
+                {
+                    Vector3 spawnPosition5 = new Vector3(spawnValuesbat.x, Random.Range(-spawnValuesbat.y, spawnValuesbat.y), spawnValuesbat.z);
+                    Instantiate(Bat, spawnPosition5, spawnRotation);
+                }
                 yield return new WaitForSeconds(spawnWait);
             }
-            Instantiate(Bat, spawnPosition5, spawnRotation);
+           
             yield return new WaitForSeconds(waveWait);
 
             if (gameOver)
@@ -150,6 +151,7 @@ public class SpawnManager : MonoBehaviour {
     //Displays the new score to the UI
     void UpdateScore()
     {
+ 
         scoreText.text = "Score: " + score;
     }
 
@@ -157,6 +159,10 @@ public class SpawnManager : MonoBehaviour {
     //Displays the new life count to the UI
     public void UpdateLives()
     {
+        if (lives< 0)
+        {
+           lives= 0;
+        }
         livesText.text = "Lives: " + lives;
     }
 
