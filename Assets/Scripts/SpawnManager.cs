@@ -24,13 +24,14 @@ public class SpawnManager : MonoBehaviour {
 
     public Text scoreText;
     public Text restartText;
-    public Text gameOverText;
+    public Text livesText;
     public Text Timer;
     public int time;
 
     private bool gameOver;
     private bool restart;
-    private int score;
+    public int score;
+    public int lives=3;
     private bool bird = false;
 
 
@@ -38,6 +39,7 @@ public class SpawnManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        score = 0;
         originPosition = new Vector2(0, -5);
         Spawn();
         StartCoroutine(SpawnWaves());
@@ -110,7 +112,7 @@ public class SpawnManager : MonoBehaviour {
 
             if (gameOver)
             {
-                restartText.text = "Press 'R' for Restart";
+                restartText.text = "    Game Over!\n\nPress 'R' for Restart";
                 restart = true;
                 break;
             }
@@ -119,7 +121,15 @@ public class SpawnManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-     //   Spawn();
+        //   Spawn();
+
+        if (restart)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+        }
     }
 
 
@@ -138,10 +148,19 @@ public class SpawnManager : MonoBehaviour {
     }
 
 
+    //Displays the new life count to the UI
+    public void UpdateLives()
+    {
+        livesText.text = "Lives: " + lives;
+    }
+
     //Sets game as ended
     public void GameOver()
     {
-        gameOverText.text = "Game Over!";
+    //    livesText.text = "Game Over!";
         gameOver = true;
+        
     }
+
+    
 }

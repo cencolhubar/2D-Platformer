@@ -10,7 +10,7 @@ public class Bird : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        scoreValue = 1;
         //Gets a reference to GameController so the score can be updated and gameover can be called
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
